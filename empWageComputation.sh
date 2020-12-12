@@ -50,3 +50,33 @@ else
 fi
 salary=$(( ratePerHr*numOfWorkingHrs ))
 echo "Employee wage :" $salary
+
+
+
+
+#!/bin/bash -x
+
+empcheck=$((RANDOM%3))
+isFullTime=1
+isPartTime=2
+salary=0
+ratePerHr=20
+
+case $empcheck in
+
+        $isFullTime)
+        echo "Full Time Employee"
+        empHrs=8
+        ;;
+        $isPartTime)
+        echo "partTime Employee"
+        empHrs=4
+        ;;
+        *)
+        echo "Employee is Absent"
+        empHrs=0
+        ;;
+esac
+
+salary=$(( $ratePerHr * $empHrs ))
+echo "Employee Wage :" $salary
