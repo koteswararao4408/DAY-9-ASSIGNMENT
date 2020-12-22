@@ -1,15 +1,19 @@
 #!/bin/bash -x
 echo "Welcome to Employee Wage Computation Program"
 
-randomcheck=$((RANDOM%2))               #To generate a random value 0 or 1
-ispresent=1
-
-if [ $ispresent -eq $randomcheck ]      #Checking for employee is present or absent
+randomcheck=$((RANDOM%3))               #To generate a random value 0 to 2
+isFullTime=1
+isPartTime=2
+salary=0
+ratePerHr=20
+if [ $isFullTime -eq $randomcheck ]     #Checking for fulltime employee
 then
-        rateperhr=20
-        numofworkinghrs=8
-        salary=$(( $rateperhr*$numofworkinghrs ))
+        numOfWorkingHrs=8
+elif [[ $isPartTime -eq $randomcheck ]] #Checking for parttime employee
+then
+        numOfWorkingHrs=4
 else
-        salary=0
+        numOfWorkingHrs=0
 fi
-echo "employee wage :" $salary          #Printing salary
+salary=$(( ratePerHr*numOfWorkingHrs ))
+echo "Employee wage :" $salary           #Printing salary
