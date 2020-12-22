@@ -1,7 +1,7 @@
 #!/bin/bash -x
 echo "Welcome to Employee Wage Computation Program"
 
-#Constants
+#constants
 IS_FULL_TIME=1
 IS_PART_TIME=2
 SALARY=0
@@ -31,10 +31,13 @@ while [[ $totalworkingHrs -lt $MAX_WORKING_HRS && $totalworkingDays -lt $MAX_WOR
                                                                                                #While loop for Maximum working days and hours
 do
         ((totalworkingDays++))
-        empcheck=$((RANDOM%3))                   #To generate a random value 0 to 2
-        empHrs="$(getworkingHrs $empcheck)"      #Calling function and checking for random value
-        totalworkingHrs=$(( $totalworkingHrs + $empHrs ))  #Total working hours
+        empcheck=$((RANDOM%3))
+        empHrs="$(getworkingHrs $empcheck)"                 #Calling function and checking for random value
+        dailyWage=$(($empHrs*$RATE_PER_HR))                 #Calculating daily wage
+        dailyWageArray[$totalworkingDays]=$dailyWage        #Calculating daily wage and storing in array
+        totalworkingHrs=$(( $totalworkingHrs + $empHrs ))
 done
-
-totalsalary=$(($totalworkingHrs*$RATE_PER_HR))            #Calculating total salary     
+totalsalary=$(( $totalworkingHrs * $RATE_PER_HR ))          # Calculating Total salary of an employee
+echo "Array elements" ${dailyWageArray[@]}                  #Printing daily wages
+echo "Index" ${!dailyWageArray[@]}
 echo "Employee Wage per month :" $totalsalary
