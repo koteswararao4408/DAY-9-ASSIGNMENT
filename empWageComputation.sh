@@ -1,25 +1,10 @@
+#!/bin/bash -x
 echo "Welcome to Employee Wage Computation Program"
 
-#!/bin/bash -x
-
-randomcheck=$((RANDOM%2))
+randomcheck=$((RANDOM%2))               #To generate a random value 0 or 1
 ispresent=1
 
-if [ $ispresent -eq $randomcheck ]
-then
-        echo "employee is present"
-else
-        echo "employee is absent"
-fi
-
-
-
-#!/bin/bash -x
-
-randomcheck=$((RANDOM%2))
-ispresent=1
-
-if [ $ispresent -eq $randomcheck ]
+if [ $ispresent -eq $randomcheck ]      #Checking for employee is present or absent
 then
         rateperhr=20
         numofworkinghrs=8
@@ -27,4 +12,6 @@ then
 else
         salary=0
 fi
-echo "employee wage :" $salary
+echo "employee wage :" $salary          #Printing salary
+
+
